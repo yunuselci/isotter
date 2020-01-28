@@ -16,7 +16,7 @@ class CrateFollowableTable extends Migration
         Schema::create('followable', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('follower_id');
-            $table->unsignedBigInteger('leader_id');
+            $table->unsignedBigInteger('following_id');
             $table->foreign('follower_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('leader_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
