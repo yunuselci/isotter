@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('user/{userId}/follow', 'UserController@followUser')->name('user.follow');
+
+Route::post('/{userId}/unfollow', 'UserController@unFollowUser')->name('user.unfollow');
