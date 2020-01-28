@@ -18,7 +18,7 @@ class CrateFollowableTable extends Migration
             $table->unsignedBigInteger('follower_id');
             $table->unsignedBigInteger('following_id');
             $table->foreign('follower_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('leader_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('following_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
