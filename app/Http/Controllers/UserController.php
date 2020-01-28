@@ -17,54 +17,12 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('home');
-    }
-    /**
-     * Follow the user.
-     *
-     * @param $user
-     *
-     * @return RedirectResponse
-     */
-    public function followUser(User $user)
-    {
-        if (!$user) {
-
-            return redirect()->back()->with('error', 'User does not exist.');
-        }
-
-        $user->followers()->attach(auth()->user()->id);
-        return redirect()->back()->with('success', 'Successfully followed the user.');
+        $users = User::all();
+        return \view('users.index')->with(['users' => $users]);
     }
 
-    /**
-     * Follow the user.
-     *
-     * @param $user
-     *
-     * @return RedirectResponse
-     */
-    public function unFollowUser(User $user)
-    {
-
-        if (!$user) {
-
-            return redirect()->back()->with('error', 'User does not exist.');
-        }
-        $user->followers()->detach(auth()->user()->id);
-        return redirect()->back()->with('success', 'Successfully unfollowed the user.');
-    }
-
-    /**
-     * Show the user details page.
-     * @param $user
-     *
-     * @return Factory|View
-     */
-    public function show(User $user)
-    {
-        $followers = $user->followers;
-        $followings = $user->followings;
-        return view('user.show', compact('user', 'followers' , 'followings'));
+    public function show($userId){
+        $user = User::find($userId);
+        return \view('users.show')->with(['user' => $user]);
     }
 }
