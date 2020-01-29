@@ -23,4 +23,6 @@ Route::get('/users','UserController@index')->name('users.index');
 
 Route::get('/users/{userId}', 'UserController@show')->name('users.show');
 
+Route::post('/users/{userId}/follow', 'UserController@follow')->name('users.follow');
+
 

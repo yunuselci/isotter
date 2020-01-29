@@ -7,8 +7,6 @@
             <div class="col-md-2">
                 <img src="{{ auth()->user()->img_url ?? 'https://ramcotubular.com/wp-content/uploads/default-avatar.jpg' }}" width="180px">
                 <h3> {{ auth()->user()->username }}</h3>
-
-
             </div>
             <div class="col-md-8">
                 <div class="card">

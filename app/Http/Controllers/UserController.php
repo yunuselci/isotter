@@ -25,4 +25,10 @@ class UserController extends Controller
         $user = User::find($userId);
         return \view('users.show')->with(['user' => $user]);
     }
+
+    public function follow($userId){
+        $user = User::find($userId);
+        $user->followers()->attach(auth()->user()->id);
+        return redirect()->back()->with('success', 'Successfully followed the user.');
+    }
 }

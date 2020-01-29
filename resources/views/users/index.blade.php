@@ -17,9 +17,11 @@
                                         <small>Following: <span class="badge badge-primary">0</span></small>
                                         <small>Followers: <span class="badge badge-primary tl-follower">0</span></small>
                                     </p>
-                                    <button class="btn btn-info btn-sm action-follow" data-id="{{ $user->id }}"><strong>
-                                            follow.button
+                                    <form method="post">
+                                    <button type="submit" class="btn btn-info btn-sm action-follow" data-id="{{ $user->id }}"><strong>
+                                            {{ route('users.follow', $user->id) }}
                                         </strong></button>
+                                    </form>
                                 </div>
                             @endforeach
                         @endif
