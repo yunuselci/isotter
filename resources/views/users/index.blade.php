@@ -8,12 +8,26 @@
                 <div class="card">
                     <div class="card-header">Liste</div>
                     <div class="card-body">
-                        @foreach($users as $user)
-                            <a href="{{ route('users.show', ['userId' => $user->id]) }}">{{ $user->username }}</a><br>
+                        @if($users->count())
+                            @foreach($users as $user)
+                                <div class="col-2 profile-box border p-1 rounded text-center bg-light mr-4 mt-3">
+                                    <img src="{{ $user->img_url ?? 'https://ramcotubular.com/wp-content/uploads/default-avatar.jpg' }}" class="w-100 mb-1">
+                                    <h5 class="m-0"><a href="{{ route('users.show', $user->id) }}"><strong>{{ $user->name }}</strong></a></h5>
+                                    <p class="mb-2">
+                                        <small>Following: <span class="badge badge-primary">0</span></small>
+                                        <small>Followers: <span class="badge badge-primary tl-follower">0</span></small>
+                                    </p>
+                                    <button class="btn btn-info btn-sm action-follow" data-id="{{ $user->id }}"><strong>
+                                            follow.button
+                                        </strong></button>
+                                </div>
                             @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+
