@@ -17,14 +17,28 @@
                                         <small>Following: <span class="badge badge-primary">0</span></small>
                                         <small>Followers: <span class="badge badge-primary tl-follower">0</span></small>
                                     </p>
-                                    <form>
-                                    <button type="submit" class="btn btn-info btn-sm action-follow" data-id="{{ route('users.follow',$user->id) }}"><strong>
+                                    <form method="post">
+                                    <button type="submit" class="btn btn-info btn-sm action-follow"><strong>
                                                 Follow
                                         </strong></button>
                                     </form>
                                 </div>
                             @endforeach
                         @endif
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function(){
+                                    $("button").click(function(){
+                                        $.post("users.follow",
+                                            {
+                                                usersId: $user => id,
+                                            },
+                                            function(data,status){
+                                                alert("Data: " + data + "\nStatus: " + status);
+                                            });
+                                    });
+                                });
+                            </script>
                     </div>
                 </div>
             </div>
