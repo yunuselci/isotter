@@ -27,8 +27,11 @@ class UserController extends Controller
     }
 
     public function follow($userId){
-        $user = User::find($userId);
-        $user->followers()->attach(auth()->user()->id);
-        return redirect()->back()->with('success', 'Successfully followed the user.');
+        if (auth()->user()->id === $userId) {
+            return response()->json(['success' => false], 422);
+        }
+        $user = auth()->user();
+        $user->followers()->toggle($userId);
+        return response()->json(['success' => true]);
     }
 }
