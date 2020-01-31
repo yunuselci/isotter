@@ -25,4 +25,7 @@ Route::get('/users/{userId}', 'UserController@show')->name('users.show');
 
 Route::post('/users/{userId}/follow', 'UserController@follow')->name('users.follow');
 
+Route::get('/users/{userId}/followers', 'UserController@followers')->name('users.followers');
+
+Route::get('/users/{userId}/following', 'UserController@followings')->name('users.followings');
 

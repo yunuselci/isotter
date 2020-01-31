@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -17,8 +16,8 @@
                                             href="{{ route('users.show', $user->id) }}"><strong>{{ $user->name }}</strong></a>
                                     </h5>
                                     <p class="mb-2">
-                                        <small>Following: <span class="badge badge-primary">0</span></small>
-                                        <small>Followers: <span class="badge badge-primary tl-follower">0</span></small>
+                                        <small>Following: <span class="badge badge-primary">{{ route('users.followings', $user->id) }}</span></small>
+                                        <small>Followers: <span class="badge badge-primary tl-follower">{{ route('users.followers', $user->id) }}</span></small>
                                     </p>
                                     <form method="post">
                                         <button type="button" class="btn btn-info btn-sm action-follow" data-id = {{ $user->id }} >

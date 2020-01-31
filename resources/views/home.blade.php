@@ -12,8 +12,7 @@
                 <div class="card">
                     <div class="card-header">Dashboard</div>
                     <div class="card-body">
-                        <form method="post">
-                        </form>
+
                     </div>
                 </div>
             </div>

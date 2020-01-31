@@ -34,4 +34,14 @@ class UserController extends Controller
         $user->followers()->toggle($userId);
         return response()->json(['success' => true]);
     }
+
+    public function followers($userId){
+        $user = User::find($userId);
+        return view('user.show', compact('user', 'followers'));
+    }
+
+    public function followings($userId){
+        $user = User::find($userId);
+        return view('user.show', compact('user', 'followings'));
+    }
 }
