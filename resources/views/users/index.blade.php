@@ -21,27 +21,31 @@
                                         <small>Followers: <span class="badge badge-primary tl-follower">0</span></small>
                                     </p>
                                     <form method="post">
-                                        <button type="button" class="btn btn-info btn-sm action-follow" data-id = {{ $user->id }} ><strong>
+                                        <button type="button" class="btn btn-info btn-sm action-follow" data-id = {{ $user->id }} >
+                                            <strong>
                                                 Follow
-                                            </strong></button>
+                                            </strong>
+                                        </button>
                                     </form>
                                 </div>
                             @endforeach
                         @endif
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                         <script>
+                            $(document).on('click', '.action-follow', function () {
+                                const userId = $(this).data('id');
+                                const authId = "{{ auth()->user()->id }}";
+                                if(authId === userId)
+                                {
+                                    alert('Kendinizi takip edemezsiniz');
 
-                            $(document).ready(function () {
-                                $(".action-follow").click(function () {
-                                    const id = $(this).data("id");
-                                    $.post('/users/'+id+'/follow',
-                                        {
-                                            userId: id,
-                                        },
-                                        function (data, status) {
-                                            alert("Data: " + data + "\nStatus: " + status);
-                                        });
-                                });
+                                }else {
+                                    $.post('users/' + userId + '/follow', {
+                                        _token: $('meta[name="csrf-token"]').attr('content')
+                                    }).done(function () {
+                                        alert('İşlem Başarılı');
+                                    });
+                                }
                             });
                         </script>
                     </div>
