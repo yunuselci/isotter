@@ -16,8 +16,8 @@
                                             href="{{ route('users.show', $user->id) }}"><strong>{{ $user->name }}</strong></a>
                                     </h5>
                                     <p class="mb-2">
-                                        <small>Following: <span class="badge badge-primary">{{ route('users.followings', $user->id) }}</span></small>
-                                        <small>Followers: <span class="badge badge-primary tl-follower">{{ route('users.followers', $user->id) }}</span></small>
+                                        <small>Following: <span class="badge badge-primary">{{ $user->followers()->get()->count() }}</span></small>
+                                        <small>Followers: <span class="badge badge-primary tl-follower"> {{ $user->followings()->get()->count() }}</span></small>
                                     </p>
                                     <form method="post">
                                         <button type="button" class="btn btn-info btn-sm action-follow" data-id = {{ $user->id }} >
