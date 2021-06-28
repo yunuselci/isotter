@@ -1,2 +1,2 @@
 # isotter
- A simple social media
+Twitter Clone - Laravel
